@@ -30,26 +30,45 @@ function levelUp() {
   level++;
 
   levelDisplay.innerText = level;
-  status.innerText = "Watch the pattern";
+  status.innerText = "Watch carefully...";
 
   let randColor = btns[Math.floor(Math.random() * btns.length)];
-  let randBtn = document.getElementById(randColor);
-
   gameSeq.push(randColor);
 
-  gameFlash(randBtn);
+  playSequence();
 }
 
-// GAME FLASH
+function playSequence() {
+  let i = 0;
+
+  let interval = setInterval(() => {
+    let btn = document.getElementById(gameSeq[i]);
+    gameFlash(btn);
+    i++;
+
+    if (i >= gameSeq.length) {
+      clearInterval(interval);
+      status.innerText = "Your turn!";
+    }
+  }, 600);
+}
+
+// SOUND
+function playSound(color) {
+  let sound = document.getElementById(color + "Sound");
+  if (sound) sound.play();
+}
+
 function gameFlash(btn) {
+  playSound(btn.id);
   btn.classList.add("flash");
   setTimeout(() => btn.classList.remove("flash"), 300);
 }
 
-// USER FLASH
 function userFlash(btn) {
+  playSound(btn.id);
   btn.classList.add("userFlash");
-  setTimeout(() => btn.classList.remove("userFlash"), 300);
+  setTimeout(() => btn.classList.remove("userFlash"), 200);
 }
 
 // BUTTON CLICK
@@ -66,6 +85,12 @@ document.querySelectorAll(".btn").forEach(btn => {
   });
 });
 
+// // SOUND
+// function playSound(color) {
+//   let sound = document.getElementById(color + "Sound");
+//   if (sound) sound.play();
+// }
+
 // CHECK ANSWER
 function checkAns(idx) {
   if (userSeq[idx] === gameSeq[idx]) {
@@ -77,20 +102,22 @@ function checkAns(idx) {
   }
 }
 
-// GAME OVER
 function gameOver() {
+  document.getElementById("wrongSound").play();
+
   status.innerHTML = `❌ Game Over! Score: <b>${level}</b>`;
+
+  document.body.classList.add("shake");
+
+  setTimeout(() => {
+    document.body.classList.remove("shake");
+  }, 400);
 
   if (level > highScore) {
     highScore = level;
     localStorage.setItem("simonsayHighScore", highScore);
     highScoreDisplay.innerText = highScore;
   }
-
-  document.body.style.background = "red";
-  setTimeout(() => {
-    document.body.style.background = "linear-gradient(135deg, #0f172a, #1e293b)";
-  }, 200);
 
   reset();
 }
