@@ -18,3 +18,7 @@ Don’t make a mistake… or it’s game over!
 ✔ Improves concentration and working memory
 ✔ Trains your brain to process patterns faster
 ✔ Makes learning fun and interactive
+
+❤️ Made With
+
+Made with passion by Muskan 💻✨
