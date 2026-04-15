@@ -14,6 +14,12 @@ let highScoreDisplay = document.getElementById("highScore");
 let status = document.getElementById("status");
 let startBtn = document.getElementById("startBtn");
 
+let strictMode = false;
+
+document.getElementById("strictMode").addEventListener("change", function () {
+  strictMode = this.checked;
+});
+
 // High Score
 let highScore = localStorage.getItem("simonsayHighScore") || 0;
 highScoreDisplay.innerText = highScore;
@@ -21,6 +27,7 @@ highScoreDisplay.innerText = highScore;
 difficultySelect.addEventListener("change", function () {
   speed = Number(this.value);
 });
+
 // START BUTTON
 startBtn.addEventListener("click", function () {
   if (!started) {
@@ -32,15 +39,16 @@ startBtn.addEventListener("click", function () {
 // LEVEL UP
 function levelUp() {
   userSeq = [];
-  level++;
 
-  levelDisplay.innerText = level;
+  levelDisplay.innerText = level; // show current first
   status.innerText = "Watch carefully...";
 
   let randColor = btns[Math.floor(Math.random() * btns.length)];
   gameSeq.push(randColor);
 
   playSequence();
+
+  level++; // move increment to END
 }
 
 function playSequence() {
@@ -110,9 +118,15 @@ function checkAns(idx) {
 function gameOver() {
   document.getElementById("wrongSound").play();
 
-  status.innerHTML = `❌ Game Over! Score: <b>${level}</b>`;
-
   document.body.classList.add("shake");
+
+  if (strictMode) {
+    status.innerHTML = `❌ Game Over! Click Start to play again`;
+    reset(); // only reset
+  } else {
+    status.innerHTML = `❌ Game Over! Score: <b>${level}</b>`;
+    reset();
+  }
 
   setTimeout(() => {
     document.body.classList.remove("shake");
@@ -123,8 +137,6 @@ function gameOver() {
     localStorage.setItem("simonsayHighScore", highScore);
     highScoreDisplay.innerText = highScore;
   }
-
-  reset();
 }
 
 // RESET
