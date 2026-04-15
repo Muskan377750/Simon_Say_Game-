@@ -5,7 +5,9 @@ let level = 0;
 let started = false;
 
 let btns = ["red", "yellow", "green", "purple"];
+let speed = 600;
 
+let difficultySelect = document.getElementById("difficulty");
 // UI Elements
 let levelDisplay = document.getElementById("level");
 let highScoreDisplay = document.getElementById("highScore");
@@ -16,6 +18,9 @@ let startBtn = document.getElementById("startBtn");
 let highScore = localStorage.getItem("simonsayHighScore") || 0;
 highScoreDisplay.innerText = highScore;
 
+difficultySelect.addEventListener("change", function () {
+  speed = Number(this.value);
+});
 // START BUTTON
 startBtn.addEventListener("click", function () {
   if (!started) {
@@ -50,7 +55,7 @@ function playSequence() {
       clearInterval(interval);
       status.innerText = "Your turn!";
     }
-  }, 600);
+  }, speed);
 }
 
 // SOUND
