@@ -20,6 +20,11 @@ document.getElementById("strictMode").addEventListener("change", function () {
   strictMode = this.checked;
 });
 
+document.getElementById("restartBtn").addEventListener("click", () => {
+  reset();
+  status.innerText = "Game Restarted! Click Start";
+});
+
 // High Score
 let highScore = localStorage.getItem("simonsayHighScore") || 0;
 highScoreDisplay.innerText = highScore;
@@ -39,7 +44,9 @@ startBtn.addEventListener("click", function () {
 // LEVEL UP
 function levelUp() {
   userSeq = [];
-
+  if (speed > 200) {
+  speed -= 10; // game gets faster
+}
   levelDisplay.innerText = level; // show current first
   status.innerText = "Watch carefully...";
 
