@@ -1,4 +1,3 @@
-// ================= STATE =================
 let gameSeq = [];
 let userSeq = [];
 
@@ -12,7 +11,7 @@ let speed = baseSpeed;
 
 let strictMode = false;
 
-// ================= UI =================
+//  get element
 const levelDisplay = document.getElementById("level");
 const highScoreDisplay = document.getElementById("highScore");
 const status = document.getElementById("status");
@@ -20,11 +19,11 @@ const startBtn = document.getElementById("startBtn");
 const restartBtn = document.getElementById("restartBtn");
 const difficultySelect = document.getElementById("difficulty");
 
-// ================= INIT =================
+// init
 let highScore = localStorage.getItem("simonsayHighScore") || 0;
 highScoreDisplay.innerText = highScore;
 
-// ================= EVENT LISTENERS =================
+// event listener
 
 // Start
 startBtn.addEventListener("click", startGame);
@@ -62,7 +61,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ================= GAME FLOW =================
+// game
 
 function startGame() {
   if (started) return;
@@ -119,7 +118,7 @@ function playSequence() {
   }, speed);
 }
 
-// ================= USER INPUT =================
+// user input
 
 function handleUserClick() {
   if (!started || isPlayingSequence) return;
@@ -141,7 +140,7 @@ function checkAnswer(index) {
   }
 }
 
-// ================= EFFECTS =================
+// effects
 
 function flash(btn, className) {
   playSound(btn.id);
@@ -152,12 +151,12 @@ function flash(btn, className) {
 function playSound(color) {
   const sound = document.getElementById(color + "Sound");
   if (sound) {
-    sound.currentTime = 0; // restart sound
+    sound.currentTime = 0; 
     sound.play();
   }
 }
 
-// ================= GAME OVER =================
+// game over
 
 function gameOver() {
   document.getElementById("wrongSound").play();
@@ -177,7 +176,7 @@ function gameOver() {
   }
 }
 
-// ================= UTIL =================
+// high score
 
 function updateHighScore() {
   if (level > highScore) {
