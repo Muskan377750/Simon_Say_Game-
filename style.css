@@ -1,4 +1,4 @@
-/* ===== GLOBAL ===== */
+/* global */
 * {
     margin: 0;
     padding: 0;
@@ -13,14 +13,14 @@ body {
     min-height: 100vh;
 }
 
-/* ===== CONTAINER ===== */
+/* container */
 .container {
     max-width: 420px;
     margin: auto;
     padding: 20px;
 }
 
-/* ===== HEADING ===== */
+/* heading */
 h1 {
     font-size: 2.8rem;
     margin-bottom: 10px;
@@ -34,7 +34,7 @@ h1 {
     opacity: 0.9;
 }
 
-/* ===== CARD UI ===== */
+/* card */
 .card {
     background: rgba(255, 255, 255, 0.07);
     border-radius: 16px;
@@ -44,14 +44,14 @@ h1 {
     margin-bottom: 15px;
 }
 
-/* ===== SCORE BOARD ===== */
+/* score board */
 .score-board {
     display: flex;
     justify-content: space-around;
     font-size: 1.1rem;
 }
 
-/* ===== BUTTONS ===== */
+/* buttons */
 .controls {
     margin-bottom: 15px;
 }
@@ -74,7 +74,7 @@ h1 {
     box-shadow: 0 0 20px rgba(99,102,241,0.8);
 }
 
-/* Pulse animation for Start */
+/* pulse animation */
 #startBtn {
     animation: pulse 1.5s infinite;
 }
@@ -85,7 +85,7 @@ h1 {
     100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
 }
 
-/* ===== DIFFICULTY ===== */
+/* difficulty */
 .difficulty {
     display: flex;
     flex-direction: column;
@@ -102,7 +102,7 @@ select {
     outline: none;
 }
 
-/* ===== GAME BOARD ===== */
+/* game board */
 .btn-container {
     display: grid;
     grid-template-columns: repeat(2, 130px);
@@ -112,7 +112,7 @@ select {
     animation: fadeIn 0.8s ease;
 }
 
-/* ===== BUTTON STYLE ===== */
+/* button */
 .btn {
     height: 130px;
     width: 130px;
@@ -123,42 +123,42 @@ select {
     box-shadow: 0 0 15px rgba(255,255,255,0.15);
 }
 
-/* COLORS */
+/* colors */
 .red { background: linear-gradient(135deg, #ff4d6d, #c9184a); }
 .yellow { background: linear-gradient(135deg, #ffd166, #ffb703); }
 .green { background: linear-gradient(135deg, #06d6a0, #118ab2); }
 .purple { background: linear-gradient(135deg, #7b61ff, #5a4fcf); }
 
-/* HOVER */
+/* hover */
 .btn:hover {
     transform: scale(1.08);
     box-shadow: 0 0 30px white;
 }
 
-/* CLICK */
+/* click */
 .btn:active {
     transform: scale(0.92);
 }
 
-/* GAME FLASH */
+/* game flash */
 .flash {
     background: white !important;
     box-shadow: 0 0 50px white;
 }
 
-/* USER CLICK */
+/* user click */
 .userFlash {
     transform: scale(0.95);
     box-shadow: 0 0 35px lime;
 }
 
-/* ===== STATUS EFFECT ===== */
+/* status effect */
 .active-turn {
     color: #22c55e;
     text-shadow: 0 0 10px #22c55e;
 }
 
-/* ===== SHAKE (GAME OVER) ===== */
+/* game over */
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-8px); }
@@ -171,13 +171,13 @@ select {
     animation: shake 0.3s;
 }
 
-/* ===== ENTRY ANIMATION ===== */
+/* entry animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.85); }
     to { opacity: 1; transform: scale(1); }
 }
 
-/* ===== RESPONSIVE ===== */
+/* responsive */
 @media (max-width: 480px) {
     .btn-container {
         grid-template-columns: repeat(2, 110px);
